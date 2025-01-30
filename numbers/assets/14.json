@@ -1,0 +1,22 @@
+{
+  "name": "Numbers #14",
+  "symbol": "NUMBERS",
+  "image": "14.png",
+  "properties": {
+    "files": [
+      {
+        "uri": "14.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "description": "A set of test NFTs for the Solana blockchain",
+  "seller_fee_basis_points": 500,
+  "attributes": [
+    {
+      "trait_type": "Number",
+      "value": "14"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Numbers #10",
+  "symbol": "NUMBERS",
+  "image": "10.png",
+  "properties": {
+    "files": [
+      {
+        "uri": "10.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "description": "A set of test NFTs for the Solana blockchain",
+  "seller_fee_basis_points": 500,
+  "attributes": [
+    {
+      "trait_type": "Number",
+      "value": "10"
+    }
+  ]
+}

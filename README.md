@@ -38,7 +38,7 @@ Now it's time to create the collection and deploy the Candy Machine.
 To create a Metaplex Core collection, you can use the [ts-sugar](https://github.com/cryptorrivem/ts-sugar) cli.
 
 ```shell
-npx ts-sugar deploy
+ts-sugar deploy
 ```
 
 To create a Metaplex MPL collection, you can use the sugar cli.
