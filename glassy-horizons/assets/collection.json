@@ -1,0 +1,17 @@
+{
+  "name": "Glassy Horizons",
+  "description": "An example collection generated with the help of ChatGPT",
+  "symbol": "GH",
+  "image": "collection.png",
+  "properties": {
+    "files": [
+      {
+        "uri": "collection.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "seller_fee_basis_points": 500,
+  "attributes": []
+}

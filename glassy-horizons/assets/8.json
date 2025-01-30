@@ -1,0 +1,22 @@
+{
+  "name": "Glassy Horizons #8",
+  "symbol": "GH",
+  "image": "8.png",
+  "properties": {
+    "files": [
+      {
+        "uri": "8.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "description": "An example collection generated with the help of ChatGPT",
+  "seller_fee_basis_points": 500,
+  "attributes": [
+    {
+      "trait_type": "Number",
+      "value": "8"
+    }
+  ]
+}
