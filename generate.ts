@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { $ } from 'zx'
 
-const collections = ['glassy-horizons', 'numbers']
+const collections = ['glassy-horizons', 'numbers', 'stardust']
 
 async function getCollectionContext(collectionId: string) {
   const collectionAssetsPath = `./${collectionId}/assets/`
@@ -211,8 +211,8 @@ export function createCollectionCard({
 export function createAssetCard({ json, path }: { json: string; path: string }) {
   const image = json.replace('json', 'png')
   return `
-    <div style="text-align: center;">
-      <img src="${`${path}/assets/` + image}" alt="${image}" style="max-height: 256px;">
+    <div style="display: flex; flex-direction: column; gap: 24px; align-items: center;">
+      <img src="${`${path}/assets/` + image}" alt="${image}" style="max-height: 256px; max-width: 256px;">
       <span>
         <a href="${path}/assets/${json}">${json}</a>
         <a href="${path}/assets/${image}">${image}</a>

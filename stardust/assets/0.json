@@ -1,0 +1,22 @@
+{
+  "name": "Stardust and Spacetime #0",
+  "symbol": "STARDUST",
+  "image": "0.png",
+  "properties": {
+    "files": [
+      {
+        "uri": "0.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "description": "A cosmic NFT collection exploring the beauty of space, time, and celestial wonders.",
+  "seller_fee_basis_points": 500,
+  "attributes": [
+    {
+      "trait_type": "Number",
+      "value": "0"
+    }
+  ]
+}

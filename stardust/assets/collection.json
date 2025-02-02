@@ -1,6 +1,6 @@
 {
-  "name": "Numbers",
-  "symbol": "NUMBERS",
+  "name": "Stardust and Spacetime",
+  "symbol": "STARDUST",
   "image": "collection.png",
   "properties": {
     "files": [
@@ -17,7 +17,7 @@
       }
     ]
   },
-  "description": "A Set of test NFT's for the Solana Blockchain",
+  "description": "A cosmic NFT collection exploring the beauty of space, time, and celestial wonders.",
   "seller_fee_basis_points": 500,
   "attributes": []
 }
