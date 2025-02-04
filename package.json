@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "generate": "tsx generate.ts",
+    "generate": "tsx collections/generate.ts",
     "serve": "serve -l 8080 output",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

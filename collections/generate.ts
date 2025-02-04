@@ -1,10 +1,8 @@
-import { readdir, readFile, writeFile } from 'node:fs/promises'
+import { readdir, readFile, stat, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { $ } from 'zx'
 
-const collections = ['glassy-horizons', 'numbers', 'stardust']
-
-async function getCollectionContext(collectionId: string) {
-  const collectionAssetsPath = `./${collectionId}/assets/`
+async function getCollectionContext(collectionAssetsPath: string) {
   const collectionAssetsFiles = await readdir(collectionAssetsPath)
   const collectionFile = collectionAssetsFiles.find((f) => f === 'collection.json')
   const collectionFilePath = collectionAssetsPath + collectionFile
@@ -13,7 +11,7 @@ async function getCollectionContext(collectionId: string) {
     throw new Error('No collection.json found')
   }
 
-  const collectionJson = JSON.parse(await readFile(collectionAssetsPath + collectionFile, 'utf-8'))
+  const collectionJson = JSON.parse(await readFile(`${collectionAssetsPath}/${collectionFile}`, 'utf-8'))
   const assetFiles = collectionAssetsFiles.filter((f) => f.endsWith('.json') && f !== 'collection.json')
 
   return {
@@ -24,7 +22,7 @@ async function getCollectionContext(collectionId: string) {
 }
 
 const baseUrl = process.env.BASE_URL ?? `http://localhost:8080`
-const outputDir = `./output/`
+const outputDir = `${process.cwd()}/output/`
 
 async function main() {
   await $`rm -rf ${outputDir}`
@@ -32,17 +30,20 @@ async function main() {
 
   const collectionDetails: { id: string; name: string; description: string }[] = []
 
+  const collectionPath = `${process.cwd()}/collections`
+  const collections = await getDirectories(collectionPath)
+
   for (const collectionId of collections) {
     const collectionUrl = `${baseUrl}/${collectionId}`
-    const collectionAssetsPath = `${collectionId}/assets`
-    const outputAssetsPath = `${outputDir}${collectionAssetsPath}`
+    const collectionAssetsPath = `${collectionPath}/${collectionId}/assets`
+    const outputAssetsPath = `${outputDir}${collectionId}/assets`
 
     const tag = `[${collectionId}]`
     console.log(`${tag} => Generating collection`)
 
     await $`mkdir -p ${outputDir}${collectionId}/assets`
 
-    const { assetFiles, collectionJson } = await getCollectionContext(collectionId)
+    const { assetFiles, collectionJson } = await getCollectionContext(collectionAssetsPath)
     console.log(`${tag} => Collection Details of ${collectionJson.name}`)
     collectionDetails.push({
       id: collectionId,
@@ -219,4 +220,12 @@ export function createAssetCard({ json, path }: { json: string; path: string }) 
       </span>
     </div>
   `.trim()
+}
+
+export async function getDirectories(path: string): Promise<string[]> {
+  return readdir(path)
+    .then((entries) =>
+      Promise.all(entries.map((entry) => stat(join(path, entry)).then((s) => (s.isDirectory() ? entry : null)))),
+    )
+    .then((dirs) => dirs.filter(Boolean) as string[])
 }
